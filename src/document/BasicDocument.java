@@ -30,7 +30,8 @@ public class BasicDocument extends Document
 	{
 		//TODO: Implement this method.  See the Module 1 support videos 
 	    // if you need help.
-	    return 0;
+		List<String> tokens = getTokens("[a-zA-Z]+");
+		return tokens.size();
 	}
 	
 	/**
@@ -46,7 +47,8 @@ public class BasicDocument extends Document
 	{
 	    //TODO: Implement this method.  See the Module 1 support videos 
         // if you need help.
-        return 0;
+		List<String> tokens = getTokens("[^!?.]+");
+        return tokens.size();
 	}
 	
 	/**
@@ -62,21 +64,28 @@ public class BasicDocument extends Document
 	{
 	    //TODO: Implement this method.  See the Module 1 support videos 
         // if you need help.
-        return 0;
+		int count = 0;
+		List<String> tokens = getTokens("[a-zA-Z]+");
+		for(String token : tokens)
+		{
+			count += countSyllables(token);
+		}
+		return count;
+	
 	}
 	
 	
 	/* The main method for testing this class. 
-	 * You are encouraged to add your own tests.  */
+	 * You are encourageåd to add your own tests.  */
 	public static void main(String[] args)
 	{
-		testCase(new BasicDocument("This is a test.  How many???  "
-		        + "Senteeeeeeeeeences are here... there should be 5!  Right?"),
-				16, 13, 5);
-		testCase(new BasicDocument(""), 0, 0, 0);
-		testCase(new BasicDocument("sentence, with, lots, of, commas.!  "
-		        + "(And some poaren)).  The output is: 7.5."), 15, 11, 4);
-		testCase(new BasicDocument("many???  Senteeeeeeeeeences are"), 6, 3, 2);		
+	//	testCase(new BasicDocument("This is a test.  How many???  "
+	//	        + "Senteeeeeeeeeences are here... there should be 5!  Right?"),
+	//			16, 13, 5);
+	//	testCase(new BasicDocument(""), 0, 0, 0);
+	//	testCase(new BasicDocument("sentence, with, lots, of, commas.!  "
+	//	        + "(And some poaren)).  The output is: 7.5."), 15, 11, 4);
+	//	testCase(new BasicDocument("many???  Senteeeeeeeeeences are"), 6, 3, 2);		
 	}
 	
 }

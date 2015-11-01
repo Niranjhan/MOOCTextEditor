@@ -53,7 +53,46 @@ public abstract class Document {
 		// TODO: Implement this method so that you can call it from the 
 	    // getNumSyllables method in BasicDocument (module 1) and 
 	    // EfficientDocument (module 2).
-	    return 0;
+		int count = 0;
+		boolean prev = false;
+		char c;
+		char[] str = word.toCharArray();
+		for(int i=0;i<str.length;i++)
+		{
+			c = str[i];
+			
+			if((c =='a') || (c =='e') ||(c =='i') ||(c =='o') ||(c =='u') || (c =='y') ||(c =='A') || (c =='E') ||(c =='I') ||(c =='O') ||(c =='U') || (c =='Y'))
+			{
+				if(!prev)
+				{
+					if(i==str.length-1)
+					{
+						if(c == 'e')
+						{
+							if(count == 0)
+							{
+								count+=1;
+							}
+						}
+						else
+						{
+							count+=1;
+						}
+					}
+					else
+					{
+						count+=1;
+						prev = true;
+					}
+					
+				}			
+			}
+			else
+			{
+				prev = false;
+			}
+		}
+	    return count;
 	}
 	
 	/** A method for testing
@@ -117,7 +156,9 @@ public abstract class Document {
 	public double getFleschScore()
 	{
 	    // TODO: Implement this method
-	    return 0.0;
+		double fleschscore = 0.0;
+		fleschscore = 206.835 - (1.015*((double)(getNumWords())/(double)(getNumSentences())))- 84.6 *((double)(getNumSyllables())/(double)(getNumWords()));
+	    return fleschscore;
 	}
 	
 	
